@@ -1,0 +1,27 @@
+
+.main-menu{
+    box-sizing: border-box;
+    position: absolute;
+    z-index:10;
+    background-color: transparent;
+    margin:0;
+    padding: $gutter;
+    top: 0;
+    left: 0;
+    width: 100%;
+    ul {
+        display: flex;
+        justify-content: space-between;
+        li {
+            list-style: none;
+            a {
+                color: white;
+                text-decoration: none;
+            }
+        }
+
+    }
+
+
+
+}

@@ -1,0 +1,71 @@
+.company{
+    box-sizing: border-box;
+    margin-bottom: $gutter;
+    background-size: cover;
+    padding: $gutter-big;
+    color: $darkest;
+
+    &::before {
+        font-family: "Font Awesome 5 Brands";
+        font-weight: bold;
+        content: "\f09b";
+        color: $darkest;
+        font-size: 6rem;
+        display: block;
+        text-align: center;
+    }
+
+    h2 {
+        font-family: 'Roboto Slab';
+        font-weight: bold;
+        margin-bottom: $gutter;
+        padding-bottom: $gutter-small;
+      }
+
+    &__excerpt {
+    margin-top: $gutter;
+    margin-bottom: $gutter;
+    }
+    
+
+    &:nth-child(odd) {
+        background-color: $lighter-blue;
+    }
+
+
+
+    @include screen-medium {
+
+        &::before {
+          float: left;
+          margin-right: $gutter;
+        }
+    
+        h2 {
+          margin-left: $gutter-big * 3;
+        }
+    
+        &__excerpt {
+          margin-left: $gutter-big * 3;
+        }
+    
+        &:nth-child(even) {
+          &::before {
+            float: right;
+          }
+    
+          h2 {
+            margin-left: 0;
+          }
+    
+          .company__excerpt {
+            margin-left: 0;
+            margin-right: $gutter-big * 3;
+          }
+        }
+      }
+
+
+
+
+}

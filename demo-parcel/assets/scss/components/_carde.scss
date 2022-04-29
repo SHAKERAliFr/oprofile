@@ -1,0 +1,9 @@
+.card {
+    @include main-box;
+
+    @include debeug {
+        border-width: 2px;
+        background-color: aqua;
+    }
+
+}

@@ -1,0 +1,44 @@
+.footer {
+    padding: $gutter-big;
+    background-color: $dark-blue;
+    color: $lightest;
+
+    h4 {
+        font-family: 'Roboto Slab';
+        font-weight: bold;
+    }
+
+    div, address {
+        margin-bottom: $gutter;
+        padding-bottom: $gutter;
+        border-bottom: solid 2px $light-blue;
+        p {
+            margin-left: 1.2rem;
+        }
+    }
+
+
+    nav ul {
+        margin-top: $gutter-big;
+        width: 100%;
+        display: flex;
+        justify-content: space-around;
+        li {
+            text-align: center;
+            a {
+                color: $lightest;
+            }
+        }
+
+    }
+
+    .social-media {
+        margin-top: $gutter-big;
+        ul {
+            width:50%;
+            margin:auto;
+        }
+    }
+    
+
+}

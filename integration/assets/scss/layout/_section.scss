@@ -1,0 +1,14 @@
+
+.section {
+    box-sizing: border-box;
+    padding: $gutter;
+
+    h1{
+        font-family: 'Roboto Slab';
+        font-weight: bold;
+        max-width: 200px;
+        margin-bottom: $gutter-big;
+        padding-bottom: $gutter-small;
+        border-bottom: solid 2px $light-blue;
+    }
+}

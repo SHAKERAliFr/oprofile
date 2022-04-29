@@ -1,0 +1,13 @@
+@mixin main-box {
+
+    width: 200px;
+    border-radius: 10px;
+    padding: 0.5rem;
+    margin: $main-guetter*2;
+    @content;
+}
+
+@mixin debeug {
+    border: 1px solid black;
+    @content;
+}

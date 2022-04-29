@@ -1,0 +1,75 @@
+.article {
+
+    @include screen-small{
+        width: 100%;
+    }
+
+    @include screen-medium{
+        width:50%;
+        float: left;
+    }
+
+    @include screen-large{
+        width:33%;
+        float: left;
+    }
+
+    box-sizing: border-box;
+    padding: $gutter-big;
+
+
+
+    &:nth-child(1) {
+        background: linear-gradient(100deg, rgba($light-blue, 0.5) 0%, rgba($light-blue, 0.5) 100%),
+        url(https://picsum.photos/400/200?random=1);
+        background-size: cover, cover;
+    }
+
+    &:nth-child(2) {
+        background:
+        linear-gradient(100deg, rgba($dark-blue, 0.5) 0%, rgba($dark-blue, 0.5) 100%),
+        url(https://picsum.photos/400/200?random=2)
+      ;
+      background-size: cover, cover;
+    }
+
+    &:nth-child(3) {
+        background:
+      linear-gradient(100deg, rgba($red, 0.5) 0%, rgba($red, 0.5) 100%),
+      url(https://picsum.photos/400/200?random=3)
+    ;
+    background-size: cover, cover;
+    }
+
+    &:nth-child(4) {
+        background:
+        linear-gradient(100deg, rgba($green, 0.5) 0%, rgba($green, 0.5) 100%),
+        url(https://picsum.photos/400/200?random=4)
+      ;
+      background-size: cover, cover;
+    }
+
+
+    
+
+
+    h2{
+        font-family: 'Roboto Slab';
+        font-weight: bold;
+        color: $lightest;
+        margin-bottom: $gutter;
+        padding-bottom: $gutter-small;
+        border-bottom: solid $lightest 2px;
+    }
+
+    // ci dessous le & représente .article
+    // on a donc le selecteur suivant: 
+    // .article__excerpt
+    &__excerpt {
+        color: $lightest;
+        margin-top: $gutter;
+        margin-bottom: $gutter;
+    }
+
+
+}

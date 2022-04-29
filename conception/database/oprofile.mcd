@@ -1,0 +1,14 @@
+imagine, 1N Client, 1N Projet
+Projet: idProjet, nom, description, url
+utilise, 1N Projet, 0N Technologie
+Technologie: idTechnologie, nom, logo
+
+Client: idClient, nom, email, biographie, urlSite, urlGitHub
+développe, 0N Développeur, 1N Projet
+Développeur: idDéveloppeur, prénom, nom, pseudo, email, biographie, urlSite, urlGitHub
+maîtrise, 0N Développeur, 0N Technologie : niveau
+
+intervient, 0N Secteur d'activité, 1N Client
+Secteur d'activité: idSecteurActivité, nom
+possède, 1N Développeur, 0N Compétence
+Compétence: idCompétence, nom, description, icône

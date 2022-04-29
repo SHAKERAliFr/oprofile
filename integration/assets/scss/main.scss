@@ -1,0 +1,42 @@
+@import url('https://fonts.googleapis.com/css2?family=PT+Sans&family=Roboto:wght@300&display=swap');
+
+@import './vendor/_reset.css';
+@import './utils/variables';
+@import './utils/mixins';
+@import './layout/section';
+
+@import './components/mainMenu';
+@import './components/welcome';
+
+@import './components/_article.scss';
+@import './components/_company.scss';
+@import './components/_footer.scss';
+
+@import './components/_carousel.scss';
+
+
+
+
+
+
+
+
+
+
+body {
+    font-family: 'PT Sans';
+
+    @include screen-small{
+        background-color: white;
+    }
+
+    @include screen-medium{
+        background-color: pink;
+    }
+
+    @include screen-large{
+        background-color: orangered;
+    }
+
+
+}

@@ -1,0 +1,23 @@
+//! découverte du nesting propre à SaSS
+article {
+    @include main-box {
+        background-color: lighten($main-color, 15)
+    }
+
+    @include debeug;
+
+
+    h2 {
+        margin: 0;
+    }
+
+    h2,
+    p {
+        color: darken($main-color, 35);
+        font-weight: 50;
+    }
+}
+
+body {
+    background-color: $main-color;
+}
