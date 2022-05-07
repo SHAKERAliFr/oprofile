@@ -1,13 +1,6 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>oProfile</title>
-    <link rel="stylesheet" href="main.2fa032cd.css">
-</head>
+<?php
+get_header();
+?>
 
 <body>
     <!------------NAVIGATION HEADER---------->
@@ -96,41 +89,16 @@
         <!--Emmet : h1.section__title+div>(article.article>h2.article__title+p.article__excerpt)*5 -->
         <h1 class="section__title">Les articles de la communauté</h1>
         <div>
-            <article class="article">
-                <h2 class="article__title">Titre article</h2>
-                <p class="article__excerpt">
-                    Lorem ipsum dolor sit amet. Voluptas dignissimos sint eaque.
-                    Molestias! Voluptates id repellat amet vitae! Vitae quod aut ex
-                    veniam? Quas temporibus sequi amet inventore?
-                </p>
-            </article>
+            <?php
+            if (have_posts()) {
+                while (have_posts()) {
+                    the_post();
+                    echo get_template_part('partials/article-community', 'article-community');
+                }
+            }
 
-            <article class="article">
-                <h2 class="article__title">Titre article</h2>
-                <p class="article__excerpt">
-                    Lorem ipsum dolor sit amet. Culpa deleniti nobis sunt sequi! Dolorum
-                    harum obcaecati ex commodi. Sunt saepe voluptatum dolorem maiores.
-                    Porro nam nihil excepturi praesentium.
-                </p>
-            </article>
+            ?>
 
-            <article class="article">
-                <h2 class="article__title">Titre article</h2>
-                <p class="article__excerpt">
-                    Lorem ipsum dolor sit amet. Culpa deleniti nobis sunt sequi! Dolorum
-                    harum obcaecati ex commodi. Sunt saepe voluptatum dolorem maiores.
-                    Porro nam nihil excepturi praesentium.
-                </p>
-            </article>
-
-            <article class="article">
-                <h2 class="article__title">Titre article</h2>
-                <p class="article__excerpt">
-                    Lorem ipsum dolor sit amet. Culpa deleniti nobis sunt sequi! Dolorum
-                    harum obcaecati ex commodi. Sunt saepe voluptatum dolorem maiores.
-                    Porro nam nihil excepturi praesentium.
-                </p>
-            </article>
         </div>
     </section>
     <!--------ILS ONT FAIT CONF------------>
@@ -176,59 +144,6 @@
             </article>
         </div>
     </section>
-    <!----------FOOTER----------------------->
-    <!--------------------------------------->
-    <footer class="section footer">
-        <div>
-            <h4><i class="far fa-envelope"></i> Email</h4>
-            <p>nicole.niviss@castoromo.com</p>
-        </div>
-
-        <div>
-            <h4><i class="far fa-envelope"></i> Téléphone</h4>
-            <p>+33 0 11 23 58 13</p>
-        </div>
-
-        <address>
-            <h4><i class="fas fa-home"></i> Adresse</h4>
-            <p>33 rue de l'export</p>
-            <p>16 640 Claix</p>
-        </address>
-
-        <!--Emmet: nav>ul>(li>a)*6-->
-        <nav>
-            <ul>
-                <li><a href="#">A propos de nous</a></li>
-                <li><a href="#">Team</a></li>
-                <li><a href="#">Jobs</a></li>
-                <li><a href="#">Presse</a></li>
-                <li><a href="#">Mentions légales</a></li>
-                <li><a href="#">FAQ</a></li>
-            </ul>
-        </nav>
-
-        <nav class="social-media">
-            <ul>
-                <li>
-                    <a href="#"><i class="fab fa-twitter"></i></a>
-                </li>
-                <li>
-                    <a href="#"><i class="fab fa-facebook-f"></i></a>
-                </li>
-                <li>
-                    <a href="#"><i class="fab fa-google-plus-g"></i></a>
-                </li>
-                <li>
-                    <a href="#"><i class="fab fa-instagram"></i></a>
-                </li>
-                <li>
-                    <a href="#"><i class="fab fa-github"></i></a>
-                </li>
-            </ul>
-        </nav>
-    </footer>
-
-    <script src="main.bcdc44b9.js"></script>
-</body>
-
-</html>
+    <?php
+    get_footer();
+    ?>
