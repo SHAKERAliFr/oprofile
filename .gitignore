@@ -18,3 +18,11 @@ wp-config.php
 !/public/content/themes/oprofile
 
 
+
+/public/content/plugins/*
+# MAIS nous demandons a git de surveiller quand même content/themes
+!/public/content/plugins
+# Dans plugins, ne pas ignorer oprofile
+!/public/content/plugins/oprofile
+
+

@@ -1,0 +1,10 @@
+{
+    "autoload": {
+      "psr-4": {
+        "OProfile\\": "./class"
+      }
+    },
+    "config": {
+      "vendor-dir": "vendor-oprofile"
+    }
+  }
