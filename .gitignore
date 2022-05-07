@@ -1,0 +1,20 @@
+vendor
+wp
+composer.lock
+# Attention nous n'avons pas envie que nos mots de passe se retrouve sur github
+wp-config.php
+
+
+# nous demandons a git d'ignorer tout ce qui se trouve dans le dossier content
+# ATTENTION à utiliser des chemins complets
+/public/content/*
+# MAIS nous demandons a git de quand même surveiller content
+!/public/content
+# nous demandons a git d'ignorer tout ce qui se trouve dans le dossier content/themes
+/public/content/themes/*
+# MAIS nous demandons a git de surveiller quand même content/themes
+!/public/content/themes
+# Dans themes, ne pas ignorer oprofile
+!/public/content/themes/oprofile
+
+
