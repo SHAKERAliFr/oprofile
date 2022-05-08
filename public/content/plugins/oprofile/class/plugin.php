@@ -6,6 +6,10 @@ class Plugin
 {
     public function __construct()
     {
+        // grace a la ligne suivante je viens me racorder a la classe registration ! 
+        // ainsi, tout ce que j'aurais codé en plus dans le constructeur de ma classe Plugin
+        // va se retrouver dans le constructeur de la classe Registration !
+        $registration = new Registration();
         // Dans ce constructeur je vais venir fabriquer mes premiers CPT :D !! 
         // au moment de l'initialisation de Wordpress
         add_action(
