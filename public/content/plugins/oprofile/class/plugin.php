@@ -170,7 +170,57 @@ class Plugin
      */
     public function activate()
     {
+        $this->registerDeveloperRole();
+        $this->registerCustomerRole();
     }
+
+    public function registerDeveloperRole()
+    {
+        // add_role https://developer.wordpress.org/reference/functions/add_role/
+
+        add_role(
+            // identifiant du role 
+            'developer',
+            // libellé
+            'Developpeur',
+            // liste des autorisatrions
+            [
+                'delete_developers' => false,
+                'delete_others_developers' => false,
+                'delete_private_developers' => false,
+                'delete_published_developers' => false,
+                'edit_developers' => true,
+                'edit_others_developers' => false,
+                'edit_private_developers' => false,
+                'edit_published_developers' => true,
+                'publish_developers' => false,
+                'read_private_developers' => false
+            ]
+        );
+    }
+    public function registerCustomerRole()
+    {
+        add_role(
+            // identifiant du role 
+            'customer',
+            // libellé
+            'Client',
+            // liste des autorisatrions
+            [
+                'delete_customers' => false,
+                'delete_others_customers' => false,
+                'delete_private_customers' => false,
+                'delete_published_customers' => false,
+                'edit_customers' => true,
+                'edit_others_customers' => false,
+                'edit_private_customers' => false,
+                'edit_published_customers' => true,
+                'publish_customers' => false,
+                'read_private_customers' => false,
+            ]
+        );
+    }
+
     /**
      * deactivate
      * Methode executée lors de la désactivation d'un plugin
@@ -178,5 +228,8 @@ class Plugin
      */
     public function deactivate()
     {
+        // //! ATTENTION ne pas oublier de supprimer les rôles lors de la désactivation du plugin
+        remove_role('developer');
+        remove_role('customer');
     }
 }
