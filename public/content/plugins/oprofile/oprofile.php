@@ -13,6 +13,7 @@ require __DIR__ . '/vendor-oprofile/autoload.php';
 $oProfile = new Plugin();
 
 
+
 // activation "hook" https://developer.wordpress.org/reference/functions/register_activation_hook/
 register_activation_hook(
     // premier argument, le chemin vers le fichier de déclaration du plugin
