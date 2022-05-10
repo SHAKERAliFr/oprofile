@@ -135,9 +135,9 @@ class Registration
         $userObject->remove_role('subscriber');
 
         // enregistrement du mot de passe utilisateur
-        $passord = filter_input(INPUT_POST, 'user_password');
+        $password = filter_input(INPUT_POST, 'user_password');
         //fonction wp qui permet de définir un mot de passe pour un user
-        wp_set_password($passord, $userId);
+        wp_set_password($password, $userId);
 
         // récupération role choisi par l'utilisateur
         $choosedRole = filter_input(INPUT_POST, 'user_role');
@@ -156,10 +156,20 @@ class Registration
             wp_insert_post([
                 'post_author' => $userId,
                 'post_status' => 'publish',
-                'post_title' => 'DevProfile',
+                'post_title' => 'Dev-Profile',
                 'post_type' => 'developer-profile'
             ]);
+        } else if ($choosedRole === 'customer') {
+
+            wp_insert_post([
+                'post_author' => $userId,
+                'post_status' => 'publish',
+                'post_title' => 'Profile-client',
+                'post_type' => 'customer-profile'
+            ]);
         }
+
+
         //! FIN CHALLENGE
 
 

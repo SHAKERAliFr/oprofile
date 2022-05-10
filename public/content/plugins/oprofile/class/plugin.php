@@ -4,12 +4,15 @@ namespace OProfile;
 
 class Plugin
 {
+
+    protected $router;
     public function __construct()
     {
         // grace a la ligne suivante je viens me racorder a la classe registration ! 
         // ainsi, tout ce que j'aurais codé en plus dans le constructeur de ma classe Plugin
         // va se retrouver dans le constructeur de la classe Registration !
         $registration = new Registration();
+        $this->router = new Router();
         // Dans ce constructeur je vais venir fabriquer mes premiers CPT :D !! 
         // au moment de l'initialisation de Wordpress
         add_action(
@@ -108,7 +111,8 @@ class Plugin
                 'supports' => [
                     'title',
                     'thumbnail',
-                    'editor'
+                    'editor',
+                    'author'
                 ],
                 'capability_type' => 'customer', //! pour customizer les capability par defaut wp
                 'map_meta_cap' => true //!ajouter plus de capability 
