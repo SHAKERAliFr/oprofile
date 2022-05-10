@@ -56,15 +56,16 @@ class UserController extends CoreController
 
         // récupération de l'utilisateur actuellement connecté
         $user = wp_get_current_user();
-
+        // var_dump($user); 
 
         // récupération de la fiche profil du user connecté
-        //? rappel : lors de l'inscritpion je vais générer une fiche profil qui sera associé au user
-        // attention, pour l'instant le mecanisme 
-        // ne vas marcher que pour les 'developers'
+        // rappel : lors de l'inscritpion je vais générer une fiche profil qui sera associé au user
+        // !attention, pour l'instant le mecanisme 
+        //! ne vas marcher que pour les 'developers'
         $profile = $this->getProfile($user);
 
-        $this->show('views/user/home');
+
+        $this->show('views/user/home', $profile);
     }
 
     /**

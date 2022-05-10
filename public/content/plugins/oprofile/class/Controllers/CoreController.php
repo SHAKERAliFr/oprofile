@@ -20,6 +20,8 @@ class CoreController
      */
     protected function show($viewName, $viewVars = [])
     {
+        // var_dump($viewVars);
+        // die();
         //https://developer.wordpress.org/reference/functions/get_template_part/
         echo get_template_part(
             $viewName,
