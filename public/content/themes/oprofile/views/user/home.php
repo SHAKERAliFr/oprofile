@@ -1,11 +1,10 @@
 <?php
 get_header();
 
-$currentUser = $args['current_user'];
-$profile = $args['fich_profile'];
+$currentUser = $args['currentUser'];
+$profile = $args['profile'];
 
-var_dump($profile);
-die();
+//var_dump($currentUser);die();
 
 echo '<section>';
 
@@ -28,18 +27,24 @@ $technologies = wp_get_object_terms(
 //var_dump($skills);
 echo 'Compétences : <br>';
 echo '<ul>';
-foreach ($skills as $skill) {
+foreach($skills as $skill){
     echo '<li>' . $skill->name . '</li>';
 }
 echo '</ul>';
 
 echo 'Tech: <br>';
 echo '<ul>';
-foreach ($technologies as $technology) {
+foreach($technologies as $technology){
     echo '<li>' . $technology->name . '</li>';
 }
 echo '</ul>';
 
+//! Correction challente supprimer compte
+// Etape 1 je récupère le router dans ma vue
+$router = $args['router'];
+$deleteUrl = $router->generate('user-delete');
+
+echo "<a href=\"$deleteUrl\"> Supprimer le compte </a>";
 
 echo '</section>';
 

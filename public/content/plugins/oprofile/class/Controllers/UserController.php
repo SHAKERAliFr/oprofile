@@ -8,6 +8,38 @@ class UserController extends CoreController
 {
 
 
+    public function delete()
+    {
+        if (!$this->mustBeConnected()) {
+            // si l'utilisateur n'est pas connecté 
+            // je ne veux SURTOUT PAS continuer l'execution de cette methode
+            // je peux donc faire un return tout court pour couper l'execution de la methode !
+            return;
+        }
+
+        // il serait dangereux de supprimer le compte admin non ?
+        if ($this->isAdmin()) {
+            echo 'Mais ti est fouuuu ! Tu vas supprimer ton compte admin !!!';
+            exit();
+        }
+
+        //! DONC si l'utilisateur est bien connecté 
+        //! ET SURTOUT, SI CE N'EST PAS UN ADMIN
+        // on va procéder a la suppression du compte
+        $user = wp_get_current_user();
+
+        // Il faut faire un require manuel des fonctions de gestion utilisateurs de wordpress
+        // On a pas acces a la fonction wp_delete_user etant donné qu'on est sur un systeme de routing maison.
+
+        require_once(ABSPATH . 'wp-admin/includes/user.php');
+
+        wp_delete_user($user->ID);
+
+        wp_redirect(
+            get_home_url()
+        );
+    }
+
     /**
      * getProfile
      * 
@@ -54,9 +86,6 @@ class UserController extends CoreController
         }
     }
 
-
-
-
     /**
      * home
      * 
@@ -71,20 +100,23 @@ class UserController extends CoreController
 
         // récupération de l'utilisateur actuellement connecté
         $user = wp_get_current_user();
-        // var_dump($user); 
 
         // récupération de la fiche profil du user connecté
-        // rappel : lors de l'inscritpion je vais générer une fiche profil qui sera associé au user
-        // !attention, pour l'instant le mecanisme 
-        //! ne vas marcher que pour les 'developers'
+        //? rappel : lors de l'inscritpion je vais générer une fiche profil qui sera associé au user
+        // attention, pour l'instant le mecanisme 
+        // ne vas marcher que pour les 'developers'
         $profile = $this->getProfile($user);
-        $data = [
-            'current_user' => $user,
-            'fich_profile' => $profile
+        //var_dump($profile->post_title);die();
+
+        // je fabrique une petite boite pour transmettre des données a la vue
+        $petiteBoite = [
+            // dans cette petite boite je fabrique un "tirroir" currentUser
+            'currentUser' => $user,
+            'profile' => $profile
         ];
 
 
-        $this->show('views/user/home', $data);
+        $this->show('views/user/home', $petiteBoite);
     }
 
     /**
@@ -99,12 +131,10 @@ class UserController extends CoreController
     {
         //avant d'afficher la vue 
         // je récupère tout un tas d'information
-        // echo 'je suis hello';
-
-        $tousUnTasDinfos = [
+        $petiteBoite = [
             'info1' => 'blabla info1'
         ];
 
-        $this->show('views/user/hello', $tousUnTasDinfos);
+        $this->show('views/user/hello', $petiteBoite);
     }
 }

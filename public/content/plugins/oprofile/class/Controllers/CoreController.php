@@ -5,6 +5,22 @@ namespace OProfile\Controllers;
 class CoreController
 {
 
+    protected $petiteBoiteRouter;
+
+    /**
+     * constructeur
+     * 
+     * On rapelle que le constructeur du CoreController va s'executer pour toutes les pages ! 
+     */
+    public function __construct()
+    {
+        // récupération du routeur depuis "l'espace" (scope) global
+        global $router;
+        // pour pouvoir nous le mettre sous le coude dans une propriété router
+        $this->petiteBoiteRouter = $router;
+    }
+
+
     /**
      * show
      * 
@@ -20,8 +36,9 @@ class CoreController
      */
     protected function show($viewName, $viewVars = [])
     {
-        // var_dump($viewVars);
-        // die();
+        // nous passons le router a la vue
+        $viewVars['router'] = $this->petiteBoiteRouter;
+
         //https://developer.wordpress.org/reference/functions/get_template_part/
         echo get_template_part(
             $viewName,
@@ -44,9 +61,29 @@ class CoreController
     {
         // si l'utilisateur n'est pas connecté
         if (!is_user_logged_in()) {
+            //echo "Je ne suis pas connecté";die();
+            // on le redirige vers la page de login
             wp_redirect(
                 wp_login_url()
             );
+            return false;
+        } else {
+            return true;
+        }
+    }
+
+    protected function isAdmin()
+    {
+        // Je récupère l'utilisateur connecté sous la forme d'un objet
+        $user = wp_get_current_user();
+        // je récupère par la suite un TABLEAU de roles
+        $roles = $user->roles;
+
+        // si dans ce tableau de roles je trouve 'administrator'
+        if (in_array('administrator', $roles)) {
+            return true;
+        } else {
+            return false;
         }
     }
 }

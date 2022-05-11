@@ -2,6 +2,9 @@
 
 use OProfile\Controllers\UserController;
 
+
+// nous déclarons le $router comme étant une variable globale.(Attention, ceci n'est pas tres propre)
+global $router;
 // je fabrique un objetr alto router
 $router = new AltoRouter();
 
@@ -47,6 +50,19 @@ $router->map(
         $controller->hello();
     },
     'user-hello'
+);
+$router->map(
+    // methode HTTP a surveiller
+    'GET',
+    // URL a matcher
+    '/user/delete/',
+    function () {
+        // instanciation du controller
+        $controller = new UserController();
+        // appel de la methode home
+        $controller->delete();
+    },
+    'user-delete'
 );
 
 // je viens vérifier si l'URL actuelle correspond a une URL
