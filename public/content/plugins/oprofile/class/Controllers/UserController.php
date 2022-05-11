@@ -18,24 +18,39 @@ class UserController extends CoreController
      */
     public function getProfile($user)
     {
-        // nous demandons à wordpress de nous selectionner le post de type "developer-profile" dont l'auteur est le $user demandé
+        if ($user->roles[0] == 'developer' || $user->roles[0] == 'customer') {
+            // nous demandons à wordpress de nous selectionner le post de type "developer-profile" dont l'auteur est le $user demandé
+            if ($user->roles[0] == 'developer') {
+                $options = [
+                    'author' => $user->ID,
+                    'post_type' => 'developer-profile'
+                ];
+            }
 
-        $options = [
-            'author' => $user->ID,
-            'post_type' => 'developer-profile'
-        ];
-
-        // j'execute une requete
-        $query = new WP_Query($options);
-
-        // si on a bien des posts
-        $query->have_posts();
-        // on va compter le nombre de posts
-        if (count($query->posts) === 0) {
-            echo "Le compte utilisateur est corrompu";
-            exit();
+            if ($user->roles[0] == 'customer') {
+                $options = [
+                    'author' => $user->ID,
+                    'post_type' => 'customer-profile'
+                ];
+            }
+            // j'execute une requete
+            //! tres important
+            // https://developer.wordpress.org/reference/classes/wp_query/
+            $query = new WP_Query($options);
+            // si on a bien des posts
+            $query->have_posts();
+            // on va compter le nombre de posts
+            if (count($query->posts) === 0) {
+                echo "Le compte utilisateur est corrompu";
+                exit();
+            } else {
+                //var_dump($query->posts);
+                return $query->posts[0];
+            }
         } else {
-            return $query->posts[0];
+            //todo on pourrait rediriger vers une 404 grace a wp_redirect()
+            echo "Cette page n'est pas accessible pour l'admin !";
+            die();
         }
     }
 
@@ -63,9 +78,13 @@ class UserController extends CoreController
         // !attention, pour l'instant le mecanisme 
         //! ne vas marcher que pour les 'developers'
         $profile = $this->getProfile($user);
+        $data = [
+            'current_user' => $user,
+            'fich_profile' => $profile
+        ];
 
 
-        $this->show('views/user/home', $profile);
+        $this->show('views/user/home', $data);
     }
 
     /**
