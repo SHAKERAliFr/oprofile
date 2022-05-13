@@ -30,7 +30,7 @@ class UserController extends CoreController
 
         // Il faut faire un require manuel des fonctions de gestion utilisateurs de wordpress
         // On a pas acces a la fonction wp_delete_user etant donné qu'on est sur un systeme de routing maison.
-
+        //! warning sans cerequire_once, wp_delete_user ne fonctionne pas
         require_once(ABSPATH . 'wp-admin/includes/user.php');
 
         wp_delete_user($user->ID);

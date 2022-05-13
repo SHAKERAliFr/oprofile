@@ -59,6 +59,16 @@ class Router
             // la règle va se mettre en haut de la pile de priorité (donc sera prioritaire)
             'top'
         );
+        add_rewrite_rule(
+            // regexp de validation de l'url demandée par le visiteur
+            // lorsque dans l'url il y aura la chaine "user" suivi d'un "/" optionnnel, suivi de n'importe quoi
+            // exemple /user/home ou encore /user/delete
+            'test/?.*',
+            // on définit une variable "VIRTUELLE" "$_GET" qui va nous permettre de savoir quand notre systeme de routing va prendre le relais
+            'index.php?test=true',
+            // la règle va se mettre en haut de la pile de priorité (donc sera prioritaire)
+            'top'
+        );
 
         //! ETAPE 2 : rafraichissement du cache des règles de routing WP
         // WP enrgistre les routes en BDD, d'ou la nécéssité de rafraichir ces routes
@@ -71,6 +81,7 @@ class Router
             $query_vars[] = 'cestNousMemeQuOnVaGererLaRoute';
             $query_vars[] = 'tatayoyo';
             $query_vars[] = 'mikabuche';
+            $query_vars[] = 'test';
             //var_dump($query_vars);die();
             return $query_vars;
         });
@@ -86,6 +97,7 @@ class Router
             $cestNousMemeQuOnVaGererLaRoute = get_query_var('cestNousMemeQuOnVaGererLaRoute');
             $tatayoyo = get_query_var('tatayoyo');
             $mikabuche = get_query_var('mikabuche');
+            $test = get_query_var('test');
 
             if ($mikabuche) {
                 echo "On charge mikabuche.php";
@@ -97,7 +109,7 @@ class Router
                 die;
             }
 
-            if ($cestNousMemeQuOnVaGererLaRoute) {
+            if ($cestNousMemeQuOnVaGererLaRoute || $test) {
                 return __DIR__ . '/../custom-routes.php';
             }
 

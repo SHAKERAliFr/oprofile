@@ -1,6 +1,7 @@
 <?php
 
 use OProfile\Controllers\UserController;
+use OProfile\Controllers\TestModelController;
 
 
 // nous déclarons le $router comme étant une variable globale.(Attention, ceci n'est pas tres propre)
@@ -63,6 +64,71 @@ $router->map(
         $controller->delete();
     },
     'user-delete'
+);
+$router->map(
+    // methode HTTP a surveiller
+    'GET',
+    // URL a matcher
+    '/test/model/create/',
+    function () {
+        // instanciation du controller
+        $controller = new TestModelController();
+        // appel de la methode home
+        $controller->cteateTable();
+    },
+    'test-cteate'
+);
+$router->map(
+    // methode HTTP a surveiller
+    'GET',
+    // URL a matcher
+    '/test/model/insert/',
+    function () {
+        // instanciation du controller
+        $controller = new TestModelController();
+        // appel de la methode home
+        $controller->insert();
+    },
+    'test-insert'
+);
+$router->map(
+    // methode HTTP a surveiller
+    'GET',
+    // URL a matcher
+    '/test/model/delete/',
+    function () {
+        // instanciation du controller
+        $controller = new TestModelController();
+        // appel de la methode home
+        $controller->delete();
+    },
+    'test-delete'
+);
+$router->map(
+    // methode HTTP a surveiller
+    'GET',
+    // URL a matcher
+    '/test/model/update/',
+    function () {
+        // instanciation du controller
+        $controller = new TestModelController();
+        // appel de la methode home
+        $controller->update();
+    },
+    'test-update'
+);
+$router->map(
+    // methode HTTP a surveiller
+    'GET',
+    // URL a matcher
+    '/test/model/getTechnologyByUserId/',
+    function () {
+        // instanciation du controller
+        $controller = new TestModelController();
+        // appel de la methode home
+        $controller->getTechnologyByUserId();
+    },
+    'test-getTechnologyByUserId'
 );
 
 // je viens vérifier si l'URL actuelle correspond a une URL

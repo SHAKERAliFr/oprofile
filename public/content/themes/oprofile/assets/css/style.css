@@ -2,7 +2,26 @@
    v2.0 | 20110126
    License: none (public domain)
 */
-
+.section{
+  background-color:rgb(222, 98, 53);
+  margin:auto;
+  height:100vh;
+  
+  }
+  .nicename{
+  font-size:3rem;
+  text-shadow: white 1px 0 20px;  
+  }
+  a.button {
+    border: 1px solid rgb(158, 52, 14);
+    text-decoration: none;
+    color:rgb(158, 52, 14);
+    background-color:rgb(255, 175, 145);
+    padding: 5px;
+    position:absolute;
+    bottom: 10px;
+    border-radius: 5px;
+}
 html, body, div, span, applet, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
 a, abbr, acronym, address, big, cite, code,

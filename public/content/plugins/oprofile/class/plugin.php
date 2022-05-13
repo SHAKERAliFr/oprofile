@@ -2,6 +2,9 @@
 
 namespace OProfile;
 
+use OProfile\Models\DeveloperTechnologyModel;
+
+
 class Plugin
 {
 
@@ -191,6 +194,8 @@ class Plugin
                 'developer'
             ]
         );
+        $modelObject = new DeveloperTechnologyModel();
+        $modelObject->createTable();
     }
 
     public function registerDeveloperRole()
@@ -250,6 +255,8 @@ class Plugin
         // //! ATTENTION ne pas oublier de supprimer les rôles lors de la désactivation du plugin
         remove_role('developer');
         remove_role('customer');
+        $modelObject = new DeveloperTechnologyModel();
+        $modelObject->dropTable();
     }
     public function addCapAdmin($customCapArray)
     {
