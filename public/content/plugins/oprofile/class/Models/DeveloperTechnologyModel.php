@@ -118,6 +118,7 @@ class DeveloperTechnologyModel extends CoreModel
             ];
         }
 
+
         return $finalResult;
     }
 }

@@ -2,6 +2,8 @@
 
 namespace OProfile\Controllers;
 
+use OProfile\Models\DeveloperTechnologyModel;
+
 use WP_Query;
 
 class UserController extends CoreController
@@ -107,10 +109,12 @@ class UserController extends CoreController
         // ne vas marcher que pour les 'developers'
         $profile = $this->getProfile($user);
         //var_dump($profile->post_title);die();
-
+        $modelObject = new DeveloperTechnologyModel();
+        $taxoData = $modelObject->getTechnologyByUserId(9);
         // je fabrique une petite boite pour transmettre des données a la vue
         $petiteBoite = [
             // dans cette petite boite je fabrique un "tirroir" currentUser
+            'taxoData' => $taxoData,
             'currentUser' => $user,
             'profile' => $profile
         ];

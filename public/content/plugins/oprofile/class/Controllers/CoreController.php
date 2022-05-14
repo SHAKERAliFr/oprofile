@@ -36,6 +36,7 @@ class CoreController
      */
     protected function show($viewName, $viewVars = [])
     {
+
         // nous passons le router a la vue
         $viewVars['router'] = $this->petiteBoiteRouter;
 

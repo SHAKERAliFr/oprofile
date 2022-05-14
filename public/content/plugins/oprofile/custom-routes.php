@@ -38,7 +38,6 @@ $router->map(
     'user-home'
 );
 
-
 $router->map(
     // methode HTTP a surveiller
     'GET',

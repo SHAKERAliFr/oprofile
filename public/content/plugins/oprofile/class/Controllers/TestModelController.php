@@ -26,6 +26,7 @@ class TestModelController extends CoreController
         $modelObject = new DeveloperTechnologyModel();
         $modelObject->insert(9, 10, 4);
         $modelObject->insert(9, 11, 2);
+        $modelObject->insert(9, 12, 2);
     }
     public function delete()
     {
@@ -41,8 +42,11 @@ class TestModelController extends CoreController
     }
     public function getTechnologyByUserId()
     {
-        echo 'je suis methode update';
+        // echo 'je suis methode getTechnologyByUserId ';
         $modelObject = new DeveloperTechnologyModel();
-        $modelObject->getTechnologyByUserId(9);
+        $taxoData = $modelObject->getTechnologyByUserId(9);
+        // var_dump($taxoData);
+        // die;
+
     }
 }

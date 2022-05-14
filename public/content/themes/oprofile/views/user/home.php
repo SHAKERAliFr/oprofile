@@ -1,10 +1,37 @@
 <?php
+echo '<section class="sectionHome">';
+//! recuperation des donneés depuis custom table
 get_header();
+// var_dump($args);
+$currentUser = $args['currentUser']->display_name;
+$technologyArray = $args['taxoData'];
+$level = $args['taxoData'][0]['level'];
 
-$currentUser = $args['currentUser'];
-$profile = $args['profile'];
+echo '<h1 class="nicename">' . $currentUser . '</h1>';
+// var_dump($technologyArray);
+echo '<h2 style="font-size:1.3rem; margin-top:15px;">Tech: </h2><br>';
+echo '<ul>';
+foreach ($technologyArray as $technologyObject) {
 
-//var_dump($currentUser);die();
+    echo '<li style="font-size:1.3rem; color:white">' . $technologyObject['technology']->name .
+        ' : ( niveau de maitrise' . $technologyObject['level'] . ' )</li>';
+}
+echo '</ul>';
+$router = $args['router'];
+$deleteUrl = $router->generate('user-delete');
+
+echo "<a href=\"$deleteUrl\"class=\"button\" > Supprimer le compte </a>";
+echo '</section>';
+get_footer();
+
+die;
+
+
+
+
+
+//!recuperation des donneés depuis cpt fiche profile
+get_header();
 
 echo '<section class="section">';
 
