@@ -8,8 +8,6 @@ oProfile est une plateforme d'échange entre développeurs et clients. Une parti
 
 Nous allons suivre la méthodologie Agile Scrum.
 
-Le Product Owner a déjà fait tout le travail de préparation et nous a mis à disposition [le product backlog sur Trello](https://trello.com/invite/b/tj4tgrNt/db7c535fa0fb1c7dbc54886bceaef27d/xandar-oprofile).
-
 ## Choix techniques
 
 ### Frontend
